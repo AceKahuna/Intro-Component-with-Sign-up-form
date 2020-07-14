@@ -1,0 +1,132 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url(/images/bg-intro-mobile.png);
+    background-repeat: no-repeat;
+    background-color: $primarycolor;
+
+    @include responsive(tab-port){
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        max-width: 100%;
+        background-size: cover;
+    }
+
+    @include responsive(tab-land){
+        background-image: url(/images/bg-intro-desktop.png);
+        background-repeat: no-repeat;
+        background-color: $primarycolor;
+        max-width: 100%;
+    }
+}
+    
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 400px;
+    padding: 30px;
+
+
+    @include responsive(phone){
+        max-width: 100%;
+    }
+
+    @include responsive(tab-port){
+        width: 100%;
+        align-items: center;
+    }
+
+    // @include responsive(tab-land){
+    //     display: flex;
+    //     flex-direction: row;
+    //     width: 100%
+    // }
+
+
+    
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    color: white;
+    margin: 30px;
+    font-family: $font;
+
+    @include responsive(tab-port){
+        width: 70vw;
+    }
+    
+    h2{
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 20px;
+    }
+
+    p{
+        font-size: 16px;
+        text-align: center;
+    }
+}
+
+.register{
+    display: flex;
+    flex-direction: column;
+
+    @include responsive(tab-port){
+        max-width: 100%;
+        align-items: center;
+    }
+
+    // @include responsive(tab-land){
+    //     display: flex;
+    //     flex-direction: column;
+    // }
+
+
+.price{
+    color: white;
+    background-color: $accent;
+    padding: 20px;
+    font-family: $font;
+    border-radius: 10px;
+    box-shadow: $neutral3 0 8px;
+    margin: 10px;
+
+    @include responsive(tab-port){
+        width: 70vw;   
+    } 
+
+    @include responsive(phone){
+        width:100%;
+    }
+
+    span{
+        font-weight: 700;
+    }
+
+    p{
+        text-align: center;
+    }
+}
+}
+
+footer{
+    text-align: center;
+    color: white;
+    margin: 10px;
+
+    a{
+        text-decoration: none;
+        color: $accent;
+    }
+}

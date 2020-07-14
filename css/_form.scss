@@ -1,0 +1,102 @@
+:root{
+    --border: 2px solid #b9b6d3;
+}
+
+.form{
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    color: $neutral;
+    font-family: $font;
+    margin: 10px;
+    box-shadow:  0 10px $neutral3;
+   
+    @include responsive(tab-port){
+        width: 70vw;   
+    }
+
+    @include responsive(phone){
+        width: 80vw;
+    }
+
+    .input-field{
+        position: relative;
+
+    input{
+        border: var(--border);
+        border-radius: 4px;
+        display: block;
+        font-size: 14px;
+        padding: 20px;
+        width: 100%; 
+        
+        &:focus{
+            outline: none;
+        }
+        &::placeholder{
+            color: $neutral2;
+            font-size: 16px;
+            font-weight: 800;
+        }
+    }
+    
+    .icon{
+        visibility: hidden;
+    }
+
+    small{
+        visibility: hidden;
+        bottom: 0;
+        left: 0;
+    }
+
+    .icon-error{
+        visibility: visible;
+        display: inline;
+        position: absolute;
+        top: 20px;
+        right: 10px;
+    }
+
+    .error-message{
+        color: $primarycolor;
+        visibility: visible;
+    }
+    
+    }
+
+    button{
+        cursor: pointer;
+        background-color: $primarycolor2;
+        padding: 20px;
+        text-transform: uppercase;
+        font-family: $font;
+        margin-bottom: 10px;
+        width: 100%;
+        border-radius: 5px;
+        color: white;
+        font-size: 12px;
+        font-weight: 700;
+        border: none;
+
+        &:focus{
+            outline: none;
+        }
+
+        &:hover{
+            background-color: $primarycolor2 ease 3s;
+            opacity: 1;
+        }
+    }
+    
+    .terms{
+        text-align: center;
+        color: $neutral2;
+        font-size: 0.8rem;
+
+        span{
+            color: $primarycolor;
+        }
+
+    }
+}
