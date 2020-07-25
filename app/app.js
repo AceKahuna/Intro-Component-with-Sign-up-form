@@ -14,26 +14,6 @@ form.addEventListener('submit', (event) => {
     formValidation();
 });
 
-
-//show errors
-const showError = (_input)=> {
-    iconError.classList.remove('icon');
-    iconError.classList.add('icon-error');
-    msg.classList.remove('msg');
-    msg.classList.add('error-message');
-    root.style.setProperty('--border', '2px solid hsl(0, 100%, 74%)');
-}
-
-//success
-const success = (_input) => {
-    input = " ";
-    iconError.classList.add('icon');
-    iconError.classList.remove('icon-error');
-    msg.classList.add('msg');
-    msg.classList.remove('error-message');
-    root.style.setProperty('--border', '2px solid #b9b6d3');
-}
-
 // email format validation
 const checkMail = (email) =>{
     let mailFormat = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -44,36 +24,88 @@ const checkMail = (email) =>{
 const formValidation = () =>{
 
     if(firstName.value === ''){
-        showError(firstName);
+        iconError.classList.remove('icon');
+        iconError.classList.add('icon-error');
+        msg.classList.remove('msg');
+        msg.classList.add('error-message');
+        root.style.setProperty('--border', '2px solid hsl(0, 100%, 74%)');
     }else if(firstName.value.length > 15){
-        showError(firstName)
+        iconError.classList.remove('icon');
+        iconError.classList.add('icon-error');
+        msg.classList.remove('msg');
+        msg.classList.add('error-message');
+        root.style.setProperty('--border', '2px solid hsl(0, 100%, 74%)');
     }else{
-        success(firstName);
+        firstName.value = "";
+        iconError.classList.add('icon');
+        iconError.classList.remove('icon-error');
+        msg.classList.add('msg');
+        msg.classList.remove('error-message');
+        root.style.setProperty('--border', '2px solid #b9b6d3');
     }
 
     if(lastName.value === ''){
-        showError(lastName);
+        iconError.classList.remove('icon');
+        iconError.classList.add('icon-error');
+        msg.classList.remove('msg');
+        msg.classList.add('error-message');
+        root.style.setProperty('--border', '2px solid hsl(0, 100%, 74%)');
     }else if(lastName.value.length > 15){
-        showError(lastName);
+        iconError.classList.remove('icon');
+        iconError.classList.add('icon-error');
+        msg.classList.remove('msg');
+        msg.classList.add('error-message');
+        root.style.setProperty('--border', '2px solid hsl(0, 100%, 74%)');
     }else{
-        success(lastName);
+        lastName.value = "";
+        iconError.classList.add('icon');
+        iconError.classList.remove('icon-error');
+        msg.classList.add('msg');
+        msg.classList.remove('error-message');
+        root.style.setProperty('--border', '2px solid #b9b6d3');
     }
 
     if(email.value === ''){
-        showError(email);
+        iconError.classList.remove('icon');
+        iconError.classList.add('icon-error');
+        msg.classList.remove('msg');
+        msg.classList.add('error-message');
+        root.style.setProperty('--border', '2px solid hsl(0, 100%, 74%)');
     }else{
         if(!checkMail(email.value)){
-            showError(email);
+            iconError.classList.remove('icon');
+            iconError.classList.add('icon-error');
+            msg.classList.remove('msg');
+            msg.classList.add('error-message');
+            root.style.setProperty('--border', '2px solid hsl(0, 100%, 74%)');
         }else{
-            success(email);
+            email.value = "";
+            iconError.classList.add('icon');
+            iconError.classList.remove('icon-error');
+            msg.classList.add('msg');
+            msg.classList.remove('error-message');
+            root.style.setProperty('--border', '2px solid #b9b6d3');
         }  
     } 
 
     if(password.value === ''){
-        showError(password);
+        iconError.classList.remove('icon');
+        iconError.classList.add('icon-error');
+        msg.classList.remove('msg');
+        msg.classList.add('error-message');
+        root.style.setProperty('--border', '2px solid hsl(0, 100%, 74%)');
     }else if(password.value.length > 15){
-        showError(password);   
+        iconError.classList.remove('icon');
+        iconError.classList.add('icon-error');
+        msg.classList.remove('msg');
+        msg.classList.add('error-message');
+        root.style.setProperty('--border', '2px solid hsl(0, 100%, 74%)'); 
     }else{
-        success(password);
+        password.value = "";
+        iconError.classList.add('icon');
+        iconError.classList.remove('icon-error');
+        msg.classList.add('msg');
+        msg.classList.remove('error-message');
+        root.style.setProperty('--border', '2px solid #b9b6d3');
     }
 }
