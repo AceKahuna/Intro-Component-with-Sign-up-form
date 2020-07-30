@@ -14,9 +14,8 @@
     @include responsive(tab-port){
         width: 70vw;   
     }
-
-    @include responsive(phone){
-        width: 80vw;
+    @include responsive(tab-land){
+        width: 40vw;
     }
 
     .input-field{
@@ -86,6 +85,18 @@
         &:hover{
             background-color: $primarycolor2 ease 3s;
             opacity: 1;
+        }
+
+        @include responsive(tab-port){
+            font-size: 16px;
+        }
+
+        @include responsive(tab-land){
+            font-size:  16px;
+        }
+
+        @include responsive(big-desktop){
+            font-size: 20px;
         }
     }
     

@@ -1,3 +1,5 @@
+@charset 'utf-8';
+
 *{
     margin: 0;
     padding: 0;
@@ -5,9 +7,10 @@
 }
 
 body{
-    background-image: url(/images/bg-intro-mobile.png);
+    background-image: url('/images/bg-intro-mobile.png');
     background-repeat: no-repeat;
     background-color: $primarycolor;
+    overflow-x: hidden;
 
     @include responsive(tab-port){
         display: flex;
@@ -18,16 +21,16 @@ body{
     }
 
     @include responsive(tab-land){
-        background-image: url(/images/bg-intro-desktop.png);
+        background-image: url('/images/bg-intro-desktop.png');
         background-repeat: no-repeat;
         background-color: $primarycolor;
         max-width: 100%;
     }
 
     @include responsive(big-desktop){
-        background-image: url(/images/bg-intro-desktop.png);
+        background-image: url('/images/bg-intro-desktop.png');
         background-color: $primarycolor;
-        background-repeat: repeat;
+        background-repeat: no-repeat;
         max-width: 100%;
     }
 }
@@ -39,11 +42,10 @@ body{
     width: 400px;
     padding: 30px;
 
-    @include responsive(phone){
-        max-width: 100%;
-    }
-
     @include responsive(tab-port){
+        display: flex;
+        align-items: center;
+        flex-direction: column;
         max-width: 100%;
         align-items: center;
     }
@@ -52,7 +54,8 @@ body{
         display: flex;
         flex-direction: row;
         width: 100%
-    } 
+    }
+
 }
 
 .info{
@@ -73,16 +76,42 @@ body{
         width: 50%;
     }
 
+    @include responsive(big-desktop){
+        padding: 0 20px;
+        width: 100%;
+    }
+
     h2{
         text-align: center;
         font-size: 1.5rem;
         font-weight: 700;
         margin: 20px;
+
+        @include responsive(tab-land){
+            font-size: 3rem;
+            text-align: left;
+        }
+
+        @include responsive(big-desktop){
+            font-size: 3rem;
+            text-align: left;  
+        }
     }
 
     p{
         font-size: 16px;
         text-align: center;
+
+        @include responsive(tab-land){
+            font-size: 1rem;
+            text-align: left;
+        }
+
+        @include responsive(big-desktop){
+            padding: 0 20px;
+            font-size: 1.5rem;
+            text-align: left;  
+        }
     }
 }
 
@@ -90,16 +119,22 @@ body{
     display: flex;
     flex-direction: column;
 
-    @include responsive(tab-land){
-        display: flex;
-        flex-direction: column;
-        width: 50%;
-    }
-
     @include responsive(tab-port){
         max-width: 100%;
         align-items: center;
     }
+    
+    @include responsive(tab-land){
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        padding: 20px;
+    }
+
+    @include responsive(big-desktop){
+        width: 100%;
+    }
+
 
 .price{
     color: white;
@@ -114,8 +149,8 @@ body{
         width: 70vw;   
     } 
 
-    @include responsive(phone){
-        width:100%;
+    @include responsive(tab-land){
+        width: 40vw;
     }
 
     span{
