@@ -3,15 +3,18 @@ const firstName = document.getElementById('firstName');
 const lastName = document.getElementById('lastName');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
-const msg = document.querySelector('.msg');
-const iconError = document.querySelector('.icon');
-const root = document.documentElement;
 
 
 //form submission
 form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    formValidation();
+    if(form.getAttribute("invalid")){
+        event.preventDefault();
+        console.log(form.getAttribute("invalid"));
+        formValidation();
+        console.log(form.getAttribute("invalid"));
+    }
+        console.log("success");
+        form.reset();
 });
 
 // email format validation
@@ -24,52 +27,64 @@ const checkMail = (email) =>{
 const formValidation = () =>{
 
     if(firstName.value === ''){
-        showError();
+        showError(firstName);
+        
     }else if(firstName.value.length > 15){
-        showError();
+        showError(firstName);      
     }else{
-        hideError();
+        hideError(firstName);       
     }
 
     if(lastName.value === ''){
-        showError();
+        showError(lastName);    
     }else if(lastName.value.length > 15){
-        showError();
+        showError(lastName);       
     }else{
-        hideError();
+        hideError(lastName);    
     }
 
     if(email.value === ''){
-        showError();
+        showError(email);    
     }else{
         if(!checkMail(email.value)){
-            showError();
+            showError(email);  
         }else{
-            hideError();
+            hideError(email);
         }  
     } 
-
     if(password.value === ''){
-        showError();
+        showError(password);
     }else if(password.value.length > 15){
-        showError(); 
+        showError(password); 
     }else{
-        hideError();
+        hideError(password);
+    }
+    if(!form.getAttribute("invalid")){
+        form.submit();
     }
 }
 
 const showError= (input) =>{
+    console.log(input.parentElement);
+    const iconError = input.parentElement.querySelector(".icon");
+    const msg = input.parentElement.querySelector(".msg");
     iconError.classList.remove('icon');
     iconError.classList.add('icon-error');
     msg.classList.remove('msg');
     msg.classList.add('error-message');
-    root.style.setProperty('--border', '2px solid hsl(0, 100%, 74%)');
+    input.parentElement.style.setProperty('--border', '2px solid hsl(0, 100%, 74%)');
+    form.setAttribute("invalid", true);
 }
 
 const hideError = (input) =>{
-    iconError.classList.add('icon');
-    iconError.classList.remove('icon-error');
-    msg.classList.add('msg');
-    msg.classList.remove('error-message');
-    root.style.setProperty('--border', '2px solid #b9b6d3');
+    const iconError = input.parentElement.querySelector(".icon-error");
+    const msg = input.parentElement.querySelector(".error-message");
+    if(iconError && msg){
+        iconError.classList.add('icon');
+        iconError.classList.remove('icon-error');
+        msg.classList.add('msg');
+        msg.classList.remove('error-message');
+        input.parentElement.style.setProperty('--border', '2px solid #b9b6d3');
+    }
+    form.setAttribute("invalid", false);
 }
