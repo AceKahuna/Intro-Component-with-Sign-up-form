@@ -24,88 +24,52 @@ const checkMail = (email) =>{
 const formValidation = () =>{
 
     if(firstName.value === ''){
-        iconError.classList.remove('icon');
-        iconError.classList.add('icon-error');
-        msg.classList.remove('msg');
-        msg.classList.add('error-message');
-        root.style.setProperty('--border', '2px solid hsl(0, 100%, 74%)');
+        showError();
     }else if(firstName.value.length > 15){
-        iconError.classList.remove('icon');
-        iconError.classList.add('icon-error');
-        msg.classList.remove('msg');
-        msg.classList.add('error-message');
-        root.style.setProperty('--border', '2px solid hsl(0, 100%, 74%)');
+        showError();
     }else{
-        firstName.value = "";
-        iconError.classList.add('icon');
-        iconError.classList.remove('icon-error');
-        msg.classList.add('msg');
-        msg.classList.remove('error-message');
-        root.style.setProperty('--border', '2px solid #b9b6d3');
+        hideError();
     }
 
     if(lastName.value === ''){
-        iconError.classList.remove('icon');
-        iconError.classList.add('icon-error');
-        msg.classList.remove('msg');
-        msg.classList.add('error-message');
-        root.style.setProperty('--border', '2px solid hsl(0, 100%, 74%)');
+        showError();
     }else if(lastName.value.length > 15){
-        iconError.classList.remove('icon');
-        iconError.classList.add('icon-error');
-        msg.classList.remove('msg');
-        msg.classList.add('error-message');
-        root.style.setProperty('--border', '2px solid hsl(0, 100%, 74%)');
+        showError();
     }else{
-        lastName.value = "";
-        iconError.classList.add('icon');
-        iconError.classList.remove('icon-error');
-        msg.classList.add('msg');
-        msg.classList.remove('error-message');
-        root.style.setProperty('--border', '2px solid #b9b6d3');
+        hideError();
     }
 
     if(email.value === ''){
-        iconError.classList.remove('icon');
-        iconError.classList.add('icon-error');
-        msg.classList.remove('msg');
-        msg.classList.add('error-message');
-        root.style.setProperty('--border', '2px solid hsl(0, 100%, 74%)');
+        showError();
     }else{
         if(!checkMail(email.value)){
-            iconError.classList.remove('icon');
-            iconError.classList.add('icon-error');
-            msg.classList.remove('msg');
-            msg.classList.add('error-message');
-            root.style.setProperty('--border', '2px solid hsl(0, 100%, 74%)');
+            showError();
         }else{
-            email.value = "";
-            iconError.classList.add('icon');
-            iconError.classList.remove('icon-error');
-            msg.classList.add('msg');
-            msg.classList.remove('error-message');
-            root.style.setProperty('--border', '2px solid #b9b6d3');
+            hideError();
         }  
     } 
 
     if(password.value === ''){
-        iconError.classList.remove('icon');
-        iconError.classList.add('icon-error');
-        msg.classList.remove('msg');
-        msg.classList.add('error-message');
-        root.style.setProperty('--border', '2px solid hsl(0, 100%, 74%)');
+        showError();
     }else if(password.value.length > 15){
-        iconError.classList.remove('icon');
-        iconError.classList.add('icon-error');
-        msg.classList.remove('msg');
-        msg.classList.add('error-message');
-        root.style.setProperty('--border', '2px solid hsl(0, 100%, 74%)'); 
+        showError(); 
     }else{
-        password.value = "";
-        iconError.classList.add('icon');
-        iconError.classList.remove('icon-error');
-        msg.classList.add('msg');
-        msg.classList.remove('error-message');
-        root.style.setProperty('--border', '2px solid #b9b6d3');
+        hideError();
     }
+}
+
+const showError= (input) =>{
+    iconError.classList.remove('icon');
+    iconError.classList.add('icon-error');
+    msg.classList.remove('msg');
+    msg.classList.add('error-message');
+    root.style.setProperty('--border', '2px solid hsl(0, 100%, 74%)');
+}
+
+const hideError = (input) =>{
+    iconError.classList.add('icon');
+    iconError.classList.remove('icon-error');
+    msg.classList.add('msg');
+    msg.classList.remove('error-message');
+    root.style.setProperty('--border', '2px solid #b9b6d3');
 }
